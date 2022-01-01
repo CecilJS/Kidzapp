@@ -6,8 +6,7 @@
 
 This web application is a solution to a University Project. Kidz App is a ficticious organisation
 that produces computing products for children between the ages of 7 - 15. This web application gives its internal 
-users the ability to record customer enquiries. External users are able to place online orders that are placed through the website and you are asked to include a backend database to interact with the website. 
-The web-based solution also integrates multimedia techniques, web services and e-marketing techniques.
+users the ability to record customer enquiries. External users are able to place online orders that are placed through the website and includes a backend, i.e., an API we build with .NET to interact with the web app. The web-based solution also integrates multimedia techniques, web services and e-marketing techniques.
 
 
 Packages
