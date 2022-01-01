@@ -1,5 +1,8 @@
+import { Container } from "@mui/material";
 import { useEffect, useState } from "react";
+import Catalog from "../../features/Catalog/Catalog";
 import { Product } from "../models/product";
+import Header from "./Header";
 
 function App() {
 const [products, setProducts] = useState<Product[]>([]);
@@ -26,13 +29,12 @@ function addProduct() {
 
   return (
     <div>
-      <h1>Kidz App</h1>
-      <ul>
-        {products.map((product)=> (
-          <li key={product.id}>{product.name} - {product.price} - {product.description}</li>
-        ))}
-      </ul>
-      <button onClick={addProduct}>Add Product</button>
+      <Header/>
+      <Container>
+          <Catalog products={products} addProduct={addProduct}/>
+      </Container>
+      
+      
     </div>
   );
 }
