@@ -1,4 +1,5 @@
-import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import { Product } from "../../app/models/product";
 
 interface Props {
@@ -9,27 +10,37 @@ export default function ProductCard({ product}: Props) {
   return (
     <div>
       <Card>
-            <CardActionArea>
+        <CardHeader
+         avatar={
+            <Avatar sx={{ bgcolor: "#421C52"}}>
+              {product.name.charAt(0).toUpperCase()}
+            </Avatar>
+         }
+          titleTypographyProps= {{
+            sx: {fontWeight: "bold"}
+          
+          }}
+          title={product.name}
+        />
+    
               <CardMedia
                 component="img"
-                height="140"
-                image="http://picsum.photos/200/300"
-                alt="green iguana"
+                sx={{ height: '140', bgcolor: '#421C52', backgroundSize: 'contain'}}
+                image={product.pictureUrl} 
+                title = {product.name}
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Lizard
+                <Typography gutterBottom color= 'secondary' variant="h5" >
+                 £{product.price.toFixed(2)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over 6,000
-                  species, ranging across all continents except Antarctica
+                  {product.type}
                 </Typography>
               </CardContent>
-            </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
-                Share
-              </Button>
+              <Button size="small" color="primary">Add to Cart</Button>
+              <Button size="small" color="primary" component={Link} to={`/catalog/${product.id}`}>View</Button>
+              
             </CardActions>
           </Card>
     </div>
