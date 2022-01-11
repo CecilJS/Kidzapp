@@ -1,6 +1,6 @@
 import { Button, Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import agent from "../../app/api/agent";
 import NotFound from "../../app/api/errors/NotFound";
 import LoadingComponent from "../../app/layout/LoadingComponents";
@@ -61,7 +61,7 @@ if(!product) return <NotFound/>;
                         </TableBody>
                     </Table>
                 </TableContainer>
-                <Button size="small" color="secondary" sx={{bgcolor: 'secondary', mb: 2, mt: 2}}>Back</Button>
+                <Button size="small" color="secondary" sx={{bgcolor: 'secondary', mb: 2, mt: 2}} component={Link} to={'/catalog'}>Back</Button>
                 <Button size="small" color="secondary" sx={{bgcolor: 'secondary', mb: 2, mt: 2}}>Add to Cart</Button>
                 
            </Grid>
