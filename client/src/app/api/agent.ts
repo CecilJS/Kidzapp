@@ -2,11 +2,18 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { history } from "../..";
 
+/*
+When a request is sent to the server, the response is returned as a promise.
+Also when a request is sent, a 204 request is sent which is known as a preflight request.
+*/
+
 const sleep = () => new Promise(resolve => setTimeout(resolve, 200));
 
-axios.defaults.baseURL = "http://localhost:5000/api/";
 
-const responseBode = (response: AxiosResponse)  => response.data;
+axios.defaults.baseURL = "http://localhost:5000/api/";
+axios.defaults.withCredentials = true; //since localhost:3000 and localhost:5000 both share the localhost domain, we need to indicate that credentials are allowed
+
+const responseBody = (response: AxiosResponse)  => response.data;
 
 axios.interceptors.response.use(async response => {
     await sleep();
@@ -42,10 +49,10 @@ axios.interceptors.response.use(async response => {
 })
 
 const request = {
-    get: (url: string) => axios.get(url).then(responseBode),
-    post: (url: string, body: {}) => axios.post(url, body).then(responseBode),
-    put: (url: string, body: {}) => axios.put(url, body).then(responseBode),
-    delete: (url: string) => axios.delete(url).then(responseBode)
+    get: (url: string) => axios.get(url).then(responseBody),
+    post: (url: string, body: {}) => axios.post(url, body).then(responseBody),
+    put: (url: string, body: {}) => axios.put(url, body).then(responseBody),
+    delete: (url: string) => axios.delete(url).then(responseBody)
 }
 
 const Catalog = {
@@ -62,9 +69,19 @@ const TestErrors = {
     getValidationError: () => request.get("buggy/validation-error"),
 }
 
+//This  object is to be used by the client side code to make requests 
+// to the server to update the basket at the frontend and the database
+const Basket = { 
+    get: () => request.get("basket"),
+    addItem: (productId: number, quantity = 1) => request.post(`basket?productId=${productId}&quantity=${quantity}`, {}),
+    removeItem: (productId: number, quantity = 1) => request.delete(`basket?productId=${productId}&quantity=${quantity}`),
+}
+
+
 const agent = {
     Catalog,
-    TestErrors
+    TestErrors, 
+    Basket
 }
 
 export default agent;
