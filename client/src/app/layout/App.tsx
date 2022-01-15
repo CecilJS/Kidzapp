@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import About from "../../features/about/About";
 import BasketPage from "../../features/basket/BasketPage";
+import { setBasket } from "../../features/basket/basketSlice";
 import Catalog from "../../features/catalog/Catalog";
 import ProductDetails from "../../features/catalog/ProductDetails";
 import CheckoutPage from "../../features/checkout/CheckoutPage";
@@ -10,7 +11,7 @@ import Contact from "../../features/contact/Contact";
 import Home from "../../features/home/Home";
 import agent from "../api/agent";
 import NotFound from "../api/errors/NotFound"; 
-import { useStoreContext } from "../context/StoreContext";
+import { useAppDispatch } from "../store/ConfigStore";
 import { getCookie } from "../util/util";
 import Header from "./Header";
 import LoadingComponent from "./LoadingComponents";
@@ -21,20 +22,20 @@ function App() {
     by using our getCookie function to check whether the basket cookie is set. if it is set, 
     we use our centralised axios agent to get the basket from the server.
   */
-   const {setBasket} = useStoreContext();
+   const dispatch = useAppDispatch();
    const [loading, setLoading] = useState(true);
 
    useEffect(() => {
      const buyerId = getCookie("buyerId");
      if(buyerId) {
        agent.Basket.get()
-       .then(basket => setBasket(basket))
+       .then(basket => dispatch(setBasket(basket)))
        .catch(err => console.log(err))
        .finally(() => setLoading(false));
      }else{
         setLoading(false);
      }
-   } , [setBasket]);
+   } , [dispatch]);
 
    // This is how we implement dark mode in our application.
   const [darkMode, setDarkMode] = useState(false);

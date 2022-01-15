@@ -5,6 +5,7 @@ import { ShoppingCart } from "@mui/icons-material";
 import { useState } from "react";
 import { useStoreContext } from "../context/StoreContext";
 import MaterialUISwitch from "../../features/mode/MaterialUISwitch";
+import { useAppSelector } from "../store/ConfigStore";
 
 
 
@@ -29,7 +30,7 @@ const secondaryLink = [
 
 
 export default function Header({darkMode, handleThemeChange}: Props) {
-  const {basket} = useStoreContext();
+  const {basket} = useAppSelector(state => state.basket);
   const itemCount = basket?.items.reduce((count, item) => count + item.quantity, 0);
   
   // changing the text from dark to light and vice versa
