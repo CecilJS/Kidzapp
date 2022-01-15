@@ -5,11 +5,11 @@ import App from './app/layout/App';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { StoreProvider } from './app/context/StoreContext';
-import { ConfigStore } from './app/store/ConfigStore';
 import { Provider } from 'react-redux';
+import { store } from './app/store/ConfigStore';
 
 
-const store = ConfigStore();
+
 
 
 export const history = createBrowserHistory();
