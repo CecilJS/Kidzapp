@@ -43,7 +43,7 @@ const dispatch = useAppDispatch();
                  {currencyFormat(product.price)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {product.type}
+                {product.brand} / {product.type}
                 </Typography>
               </CardContent>
             <CardActions>
