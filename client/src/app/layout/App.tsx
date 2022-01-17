@@ -8,6 +8,7 @@ import Catalog from "../../features/catalog/Catalog";
 import ProductDetails from "../../features/catalog/ProductDetails";
 import CheckoutPage from "../../features/checkout/CheckoutPage";
 import Contact from "../../features/contact/Contact";
+import Footer from "../../features/footer/Footer";
 import Home from "../../features/home/Home";
 import agent from "../api/agent";
 import NotFound from "../api/errors/NotFound"; 
@@ -70,6 +71,7 @@ if(loading) return <LoadingComponent message='Initialising the app...'/>
           <Route component={NotFound}/>
         </Switch>
       </Container> 
+      <Footer/>
     </ThemeProvider>
   );
 }

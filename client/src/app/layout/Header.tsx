@@ -3,7 +3,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link, NavLink } from "react-router-dom";
 import { ShoppingCart } from "@mui/icons-material";
 import { useState } from "react";
-import { useStoreContext } from "../context/StoreContext";
 import MaterialUISwitch from "../../features/mode/MaterialUISwitch";
 import { useAppSelector } from "../store/ConfigStore";
 
@@ -17,9 +16,10 @@ interface Props {
 
 // links to map into the navbar for routing purposes
 const primaryLink = [
-  { title: "Shop", path: "/catalog" },
+  
   { title: "about", path: "/about" },
   { title: "contact", path: "/contact" },
+  { title: "Shop", path: "/catalog" }
 ]
 
 const secondaryLink = [
