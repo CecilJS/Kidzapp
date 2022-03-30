@@ -11,13 +11,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20220117150359_IdentityAdded")]
+    [Migration("20220328130408_IdentityAdded")]
     partial class IdentityAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.1");
+            modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
 
             modelBuilder.Entity("API.Entities.Basket", b =>
                 {
@@ -181,15 +181,15 @@ namespace API.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f7436b06-d82b-4fd1-81d7-a4062ed1a7a1",
-                            ConcurrencyStamp = "90daf197-5b7c-4ed6-95aa-707bfd7b7e70",
-                            Name = "Memeber",
-                            NormalizedName = "MEMEBER"
+                            Id = "d8152365-5fab-4a66-8af8-6e44a4dc52c4",
+                            ConcurrencyStamp = "d4926bad-61ad-4988-80d3-0feadceab5a3",
+                            Name = "Member",
+                            NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "447841ea-6cd2-4cbc-a090-ddc485dbe23e",
-                            ConcurrencyStamp = "0c2d5e66-6671-4f63-a27f-a2f6b14ffb3a",
+                            Id = "fb1a6cec-5735-4d07-96e4-1976f37e792d",
+                            ConcurrencyStamp = "f27cbc4b-43a0-40ce-90f5-bd7867874c5c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

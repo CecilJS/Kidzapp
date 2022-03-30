@@ -3,17 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace API.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(StoreContext context){
+        public static async Task Initialize(StoreContext context, UserManager<User> userManager){
+
+            if(!userManager.Users.Any())
+            {
+                var user = new User
+                {
+                    UserName = "cecil",
+                    Email = "cecil@test.com"
+                };
+
+                await userManager.CreateAsync(user, "Pa$$w0rd");
+                await userManager.AddToRoleAsync(user, "Member");
+
+                 var admin = new User
+                {
+                    UserName = "admin",
+                    Email = "admin@test.com"
+                };
+
+                await userManager.CreateAsync(user, "Pa$$w0rd");
+                await userManager.AddToRolesAsync(admin, new[] {"Member", "Admin"});
+            }
+
             if(context.Products.Any()) return;
 
                 var products = new List<Product>
                 {
-                    		new Product
+                new Product
                 {
                     Name = "Fisher Price",
                     Description =  "The caterpillar-like toy works by actually taking the most fundamental concepts of programming and breaking them down into a format that would both entertain and educate a young human. The Code-a-Pillar has eight segments, each of which have a different command icon that controls how the toy moves or acts. Children choose how to connect the eight parts, and once they push start, the caterpillar moves according to its 'programming.'",
@@ -167,6 +190,11 @@ namespace API.Data
             }
 
             context.SaveChanges();
+        }
+
+        internal static Task Initialize(StoreContext context, bool userManager)
+        {
+            throw new NotImplementedException();
         }
     }
 }

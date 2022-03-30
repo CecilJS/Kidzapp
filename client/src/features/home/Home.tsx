@@ -5,11 +5,11 @@ import { LoadingButton } from "@mui/lab";
 
 export default function Home (){
 
+    // I appreciate this code defies the rules of clean code in that I am repeating the same code in multiple places. 
+    // I plan to refactor this code to be more reusable. 
     return (
 
     <>
-   
-    
       <Grid container spacing={6} sx={{marginTop: 15}} >
            <Grid item xs={12} sm={12} md={4} lg={6}>
                 <img src={background} alt="background" style={{width: '100%'}}/>
