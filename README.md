@@ -1,8 +1,6 @@
 
 ## Documentation
-This web application is a solution to a University Project. Kidz App is a ficticious organisation that produces computing products for children between the ages of 7 - 15. This web application gives its internal users the ability to record customer enquiries. External users are able to place online orders that are placed through the website and includes a backend, i.e., an API built with .NET to interact with the web app. The web-based solution also integrates multimedia techniques, web services and e-marketing techniques.
-
-
+ Kidz App is a ficticious organisation that produces computing artifacts for children between the ages of 7 - 15. This web application gives its internal users the ability to record customer enquiries. External users are able to place online orders through the website. This application has a backend built with .NET to interact with the web app. The web-based solution also integrates multimedia techniques, web services and e-marketing techniques.
 
 ## Dependencies
 
@@ -14,7 +12,7 @@ the latest version of node installed on your system. To check which version of n
 system, type the following command
 
 ```bash
-  node --version or node -v    // whichever is easier
+ node -v
 ```
 
 If you do not have node installed on your system, head to the official website
